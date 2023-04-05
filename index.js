@@ -1,6 +1,5 @@
 // Import stylesheets
 import './style.css';
-import './analytics.js';
 
 // Write Javascript code!
 
@@ -157,15 +156,25 @@ class App {
     finishProjectList.setSwitchHandler(
       activeProjectList.addProject.bind(activeProjectList)
     );
-    document
-      .getElementById('analytic-btn')
-      .addEventListener('click', this.analytics);
+    const timeId = setTimeout(function () {
+      (async () => {
+        try {
+          let { show } = await import('./analytics.js');
+          show();
+        } catch (err) {
+          console.log(err);
+        }
+      })();
+    }, 3000);
+    document.getElementById('analytic-btn').addEventListener('click', () => {
+      clearTimeout(timeId);
+    });
   }
-  static analytics() {
-    const analyticsScript = document.createElement('script');
-    analyticsScript.src = './analytics.js';
-    analyticsScript.defer = true;
-    document.head.append(analyticsScript);
-  }
+  // static analytics() {
+  //   const analyticsScript = document.createElement('script');
+  //   analyticsScript.src = './analytics.js';
+  //   analyticsScript.defer = true;
+  //   document.head.append(analyticsScript);
+  // }
 }
 App.init();

@@ -124,3 +124,6 @@ button:active {
   color: white;
   margin: 0;
 }
+footer {
+  bottom: -320px;
+}
