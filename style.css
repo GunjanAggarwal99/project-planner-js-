@@ -127,3 +127,6 @@ button:active {
 footer {
   bottom: -320px;
 }
+.droppable{
+  background: #ffe0ec;
+}
