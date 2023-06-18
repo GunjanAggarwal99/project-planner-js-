@@ -147,9 +147,9 @@ class ProjectList {
     const list = document.querySelector(`#${this.type}-projects ul`);
     list.addEventListener('dragenter', (event) => {
       if (event.dataTransfer.types[0] === 'text/plain') {
+        list.parentElement.classList.add('droppable');
         event.preventDefault();
       }
-      list.parentElement.classList.add('droppable');
     });
     list.addEventListener('dragover', (event) => {
       if (event.dataTransfer.types[0] === 'text/plain') {
@@ -163,7 +163,7 @@ class ProjectList {
     });
     list.addEventListener('drop', (event) => {
       const prjId = event.dataTransfer.getData('text/plain');
-      if (this.prjId.find((p) => p.id === prjId)) {
+      if (this.projects.find((p) => p.id === prjId)) {
         return;
       }
       document
