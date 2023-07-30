@@ -156,17 +156,10 @@
 // // Call the init method to start the application
 // App.init();
 
-import './style.css';
+
 
 class App {
   static async init() {
-    await App.loadScript('./App/Component.js');
-    await App.loadScript('./Utility/DOMHelper.js');
-    await App.loadScript('./App/Tooltip.js');
-    await App.loadScript('./App/ProjectItem.js');
-    await App.loadScript('./App/ProjectList.js');
-
-    // Once all scripts are loaded, proceed with initializing the app
     const activeProjectList = new ProjectList('active');
     const finishProjectList = new ProjectList('finished');
     activeProjectList.setSwitchHandler(
@@ -176,17 +169,11 @@ class App {
       activeProjectList.addProject.bind(activeProjectList)
     );
   }
-
-  static loadScript(src) {
-    return new Promise((resolve) => {
-      const script = document.createElement('script');
-      script.src = src;
-      script.defer = true;
-      script.onload = resolve;
-      document.head.append(script);
-    });
+  static startAnalytics() {
+    const analyticsScript = document.createElement('script');
+    analyticsScript.src = 'assets/scripts/Utility/Analytics.js';
+    analyticsScript.defer = true;
+    document.head.append(analyticsScript);
   }
 }
-
-// Call the init method to start the application
 App.init();

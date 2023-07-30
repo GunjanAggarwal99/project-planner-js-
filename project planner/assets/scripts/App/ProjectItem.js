@@ -1,4 +1,4 @@
-export class ProjectItem {
+class ProjectItem {
   hasActiveTooltip = false;
 
   constructor(id, updateProjectFunction, type) {
@@ -42,7 +42,7 @@ export class ProjectItem {
   connectSwitchButton(type) {
     const projectEl = document.getElementById(this.id);
     let switchbtn = projectEl.querySelector('button:last-of-type');
-    switchbtn = DomHelper.clearEvenetListner(switchbtn);
+    switchbtn = DOMHelper.clearEvenetListner(switchbtn);
     switchbtn.textContent = type === 'active' ? 'Finish' : 'Activate';
     switchbtn.addEventListener(
       'click',

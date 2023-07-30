@@ -1,4 +1,4 @@
-export class DomHelper {
+class DOMHelper {
   static clearEvenetListner(element) {
     const cloneElement = element.cloneNode(true);
     element.replaceWith(cloneElement);

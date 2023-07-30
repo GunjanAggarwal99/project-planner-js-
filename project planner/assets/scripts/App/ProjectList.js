@@ -1,4 +1,4 @@
-export class ProjectList {
+class ProjectList {
   projects = [];
   constructor(type) {
     this.type = type;
@@ -49,7 +49,7 @@ export class ProjectList {
   }
   addProject(project) {
     this.projects.push(project);
-    DomHelper.moveElement(project.id, `#${this.type}-projects ul`);
+    DOMHelper.moveElement(project.id, `#${this.type}-projects ul`);
     project.update(this.switchProject.bind(this), this.type);
   }
   switchProject(projectId) {
